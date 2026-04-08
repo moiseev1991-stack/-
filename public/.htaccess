@@ -1,2 +1,14 @@
-# Helps Apache serve Arabic path segments and UTF-8 pages correctly.
+# Apache config for static Next.js export with Arabic URL paths.
+
 AddDefaultCharset UTF-8
+DirectoryIndex index.html
+Options -Indexes
+
+# Serve .html files for extension-less requests (fallback for any missed pages)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
