@@ -1,8 +1,11 @@
-/** Legal / info pages: content in /polise; `path` is the real app route (ASCII) for static export. */
+/**
+ * Legal / info pages. `path` is the public Arabic URL (alias created by add-arabic-aliases.mjs).
+ * The actual Next.js app directory is at `app/info/<ascii-slug>/` but users see the Arabic path.
+ */
 export type PolisePageDef = {
   /** Key for content + in-page nav (Arabic segment) */
   slug: string;
-  /** Canonical URL path (ASCII), trailing slash for static export */
+  /** Public-facing Arabic URL path, trailing slash for static export */
   path: string;
   /** Filename inside polise/ */
   file: string;
@@ -11,35 +14,35 @@ export type PolisePageDef = {
 };
 
 export const POLISE_PAGES: PolisePageDef[] = [
-  { slug: "من-نحن", path: "/info/about-us/", file: "من-نحن.txt", label: "من نحن" },
+  { slug: "من-نحن", path: "/من-نحن/", file: "من-نحن.txt", label: "من نحن" },
   {
     slug: "سياسة-الخصوصية",
-    path: "/info/privacy-policy/",
+    path: "/سياسة-الخصوصية/",
     file: "سياسة-الخصوصية.txt",
     label: "سياسة الخصوصية",
   },
   {
     slug: "سياسة-ملفات-تعريف-الارتباط",
-    path: "/info/cookie-policy/",
+    path: "/سياسة-ملفات-تعريف-الارتباط/",
     file: "سياسة-ملفات-تعريف-الارتباط.txt",
     label: "سياسة ملفات تعريف الارتباط (الكوكيز)",
   },
   {
     slug: "شروط-الاستخدام",
-    path: "/info/terms-of-use/",
+    path: "/شروط-الاستخدام/",
     file: "شروط-الاستخدام.txt",
     label: "شروط الاستخدام",
   },
   {
     slug: "اخلاء-المسوولية-والمقامرة-المسوولة",
-    path: "/info/disclaimer-and-responsible-gaming/",
+    path: "/اخلاء-المسوولية-والمقامرة-المسوولة/",
     file: "اخلاء-المسوولية-والمقامرة-المسوولة.txt",
     label: "إخلاء المسؤولية والمقامرة المسؤولة",
   },
-  { slug: "اتصل-بنا", path: "/info/contact-us/", file: "اتصل-بنا_eg.txt", label: "اتصل بنا" },
+  { slug: "اتصل-بنا", path: "/اتصل-بنا/", file: "اتصل-بنا_eg.txt", label: "اتصل بنا" },
   {
     slug: "كيف-نقيم-الكازينوهات",
-    path: "/info/how-we-rate-casinos/",
+    path: "/كيف-نقيم-الكازينوهات/",
     file: "كيف-نقيم-الكازينوهات.txt",
     label: "كيف نقيّم الكازينوهات",
   },

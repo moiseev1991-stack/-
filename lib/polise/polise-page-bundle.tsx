@@ -10,7 +10,7 @@ import {
 } from "@/lib/polise/load-polise";
 import { absoluteUrl } from "@/lib/seo/site";
 
-/** Factory for `app/info/...` pages — canonical URLs use ASCII `path` from POLISE_PAGES. */
+/** Factory for `app/info/...` pages — canonical URLs use Arabic `path` from POLISE_PAGES. */
 export function createPolisePageExports(slug: string) {
   const found = getPolisePage(slug);
   if (!found) {
