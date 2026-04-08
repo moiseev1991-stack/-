@@ -1,0 +1,2 @@
+# Helps Apache serve Arabic path segments and UTF-8 pages correctly.
+AddDefaultCharset UTF-8
