@@ -18,8 +18,7 @@ import {
 import { jsonLdBreadcrumbFromHero, pageMetadata } from "@/lib/seo/metadata";
 import { ROUTES } from "@/lib/routes";
 import Link from "next/link";
-import ArticleBody from "@/components/common/ArticleBody";
-import { slotsContent } from "@/lib/content/slots";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 export const metadata = pageMetadata(slotsPageBundle);
 
@@ -148,7 +147,7 @@ export default function SlotsPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={slotsContent} />
+      <ArticleBodyLoader kind="slots" />
     </>
   );
 }

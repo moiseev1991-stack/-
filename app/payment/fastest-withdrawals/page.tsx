@@ -1,5 +1,4 @@
-import ArticleBody from "@/components/common/ArticleBody";
-import { fastWithdrawalContent } from "@/lib/content/fast-withdrawal";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 import FastWithdrawalsPageContent from "@/components/internal/FastWithdrawalsPageContent";
 import JsonLd from "@/components/internal/JsonLd";
@@ -19,7 +18,7 @@ export default function FastestWithdrawalsPage() {
       />
       <PageHero {...b.hero} />
       <FastWithdrawalsPageContent />
-      <ArticleBody content={fastWithdrawalContent} />
+      <ArticleBodyLoader kind="fastWithdrawal" />
     </>
   );
 }

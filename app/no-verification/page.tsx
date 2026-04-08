@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
 import CasinoTable from "@/components/common/CasinoTable";
-import ArticleBody from "@/components/common/ArticleBody";
-import { noVerificationContent } from "@/lib/content/no-verification";
-import { casinoList } from "@/lib/data/casinos";
 import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
+import { casinoList } from "@/lib/data/casinos";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 export const metadata: Metadata = {
   title: "كازينو بدون توثيق مصر 2026 | تسجيل سريع آمن",
   description:
     "دليل 2026 للكازينو بدون توثيق في مصر: مقارنة المواقع، طرق الدفع، المخاطر القانونية، ونصائح اختيار آمن.",
-  alternates: { canonical: absoluteUrl("/بدون-توثيق") },
+  alternates: { canonical: absoluteUrl(`${ROUTES.noVerification}/`) },
 };
 
 const benefits = [
@@ -44,19 +43,15 @@ export default function NoVerificationPage() {
       />
       <PageShell>
         <section>
-          <h2 className="mb-6 text-xl font-bold text-[#1A1A1A]">
-            مقارنة الكازينوهات
-          </h2>
+          <h2 className="mb-6 text-xl font-bold text-[#1A1A1A]">مقارنة الكازينوهات</h2>
           <CasinoTable casinos={casinoList} />
         </section>
 
         <section className="mt-8">
-          <h2 className="mb-4 text-xl font-bold text-[#1A1A1A]">
-            المخاطر التي يجب معرفتها
-          </h2>
+          <h2 className="mb-4 text-xl font-bold text-[#1A1A1A]">المخاطر التي يجب معرفتها</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {risks.map((item) => (
-              <div key={item.t} className="rounded-xl border border-[#E8E4DA] bg-white p-5">
+            {risks.map((item, i) => (
+              <div key={i} className="rounded-xl border border-[#E8E4DA] bg-white p-5">
                 <h3 className="mb-2 font-semibold text-[#C8963E]">{item.t}</h3>
                 <p className="text-sm text-[#555]">{item.d}</p>
               </div>
@@ -82,7 +77,7 @@ export default function NoVerificationPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={noVerificationContent} />
+      <ArticleBodyLoader kind="noVerification" />
     </>
   );
 }

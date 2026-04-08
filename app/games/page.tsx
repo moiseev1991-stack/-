@@ -1,5 +1,4 @@
-import ArticleBody from "@/components/common/ArticleBody";
-import { casinoGamesContent } from "@/lib/content/casino-games";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 import CasinoCard from "@/components/common/CasinoCard";
 import SiteIcon from "@/components/common/SiteIcon";
@@ -124,7 +123,7 @@ export default function GamesHubPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={casinoGamesContent} />
+      <ArticleBodyLoader kind="casinoGames" />
     </>
   );
 }

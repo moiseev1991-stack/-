@@ -16,8 +16,7 @@ import {
 import { jsonLdBreadcrumbFromHero, pageMetadata } from "@/lib/seo/metadata";
 import { ROUTES } from "@/lib/routes";
 import Link from "next/link";
-import ArticleBody from "@/components/common/ArticleBody";
-import { rouletteContent } from "@/lib/content/roulette";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 export const metadata = pageMetadata(roulettePageBundle);
 
@@ -138,7 +137,7 @@ export default function RoulettePage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={rouletteContent} />
+      <ArticleBodyLoader kind="roulette" />
     </>
   );
 }

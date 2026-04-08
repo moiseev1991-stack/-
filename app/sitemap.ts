@@ -21,7 +21,7 @@ const routes = [
   ROUTES.liveCasino,
   ROUTES.bonuses,
   ROUTES.noVerification,
-  ...POLISE_PAGES.map((p) => `/${p.slug}`),
+  ...POLISE_PAGES.map((p) => p.path.replace(/\/?$/, "") || "/"),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

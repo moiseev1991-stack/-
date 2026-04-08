@@ -1,6 +1,5 @@
-import ArticleBody from "@/components/common/ArticleBody";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import SiteIcon from "@/components/common/SiteIcon";
-import { newCasinoContent } from "@/lib/content/new-casino";
 
 import CasinoCard from "@/components/common/CasinoCard";
 import CasinoTable from "@/components/common/CasinoTable";
@@ -123,7 +122,7 @@ export default function NewCasinosPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={newCasinoContent} />
+      <ArticleBodyLoader kind="newCasino" />
     </>
   );
 }

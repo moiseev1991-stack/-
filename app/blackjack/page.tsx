@@ -6,15 +6,15 @@ import CasinoListSection from "@/components/sections/CasinoListSection";
 import FreeGamesSection from "@/components/sections/FreeGamesSection";
 import FaqSection from "@/components/sections/FaqSection";
 import SectionTitle from "@/components/common/SectionTitle";
-import ArticleBody from "@/components/common/ArticleBody";
-import { blackjackContent } from "@/lib/content/blackjack";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
+import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   title: "أفضل كازينوهات البلاك جاك 2026 | كازينو عربي أونلاين",
   description:
     "العب البلاك جاك أونلاين. مع الاستراتيجية الصحيحة قلل ميزة الكازينو إلى أقل من 0.5%.",
-  alternates: { canonical: absoluteUrl("/بلاك-جاك/") },
+  alternates: { canonical: absoluteUrl(`${ROUTES.blackjack}/`) },
 };
 
 const schemaData = {
@@ -66,7 +66,7 @@ export default function BlackjackPage() {
         description="دليل البلاك جاك للاعبين العرب — الاستراتيجية الأساسية، أفضل الكازينوهات، وكيف تحقق أدنى ميزة للكازينو."
         breadcrumb={[
           { label: "الرئيسية", href: "/" },
-          { label: "بلاك جاك", href: "/بلاك-جاك" },
+          { label: "بلاك جاك", href: ROUTES.blackjack },
         ]}
       >
         <section className="py-6">
@@ -87,7 +87,7 @@ export default function BlackjackPage() {
         <CasinoListSection casinos={casinoList} title="أفضل الكازينوهات لألعاب البلاك جاك" />
         <FaqSection items={faq} title="أسئلة شائعة حول البلاك جاك" />
       </InnerLayout>
-      <ArticleBody content={blackjackContent} />
+      <ArticleBodyLoader kind="blackjack" />
     </>
   );
 }

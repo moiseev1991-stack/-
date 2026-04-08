@@ -8,18 +8,16 @@ import {
   preparePoliseMarkdown,
   readPoliseFile,
 } from "@/lib/polise/load-polise";
-import { SITE_URL } from "@/lib/seo/site";
+import { absoluteUrl } from "@/lib/seo/site";
 
-/**
- * Explicit Arabic route folders (e.g. app/من-نحن/page.tsx) — dynamic [slug]
- * with Unicode segments can 404 on Next 16; this factory keeps pages DRY.
- */
-export function createPolisePageExports(slug: string, canonicalPath = `/${slug}`) {
+/** Factory for `app/info/...` pages — canonical URLs use ASCII `path` from POLISE_PAGES. */
+export function createPolisePageExports(slug: string) {
   const found = getPolisePage(slug);
   if (!found) {
     throw new Error(`createPolisePageExports: unknown slug "${slug}"`);
   }
   const pageDef: PolisePageDef = found;
+  const canonical = absoluteUrl(pageDef.path);
 
   async function generateMetadata(): Promise<Metadata> {
     const raw = await readPoliseFile(pageDef.file);
@@ -28,13 +26,13 @@ export function createPolisePageExports(slug: string, canonicalPath = `/${slug}`
     return {
       title,
       description,
-      alternates: { canonical: `${SITE_URL}${canonicalPath}` },
+      alternates: { canonical },
       openGraph: {
         locale: "ar_EG",
         type: "website",
         title,
         description,
-        url: `${SITE_URL}${canonicalPath}`,
+        url: canonical,
       },
     };
   }

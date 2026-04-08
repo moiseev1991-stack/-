@@ -17,8 +17,7 @@ import {
 import { jsonLdBreadcrumbFromHero, pageMetadata } from "@/lib/seo/metadata";
 import { ROUTES } from "@/lib/routes";
 import Link from "next/link";
-import ArticleBody from "@/components/common/ArticleBody";
-import { realMoneyContent } from "@/lib/content/real-money";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 export const metadata = pageMetadata(realMoneyPageBundle);
 
@@ -115,7 +114,7 @@ export default function RealMoneyPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={realMoneyContent} />
+      <ArticleBodyLoader kind="realMoney" />
     </>
   );
 }

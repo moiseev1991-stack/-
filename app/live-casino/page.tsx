@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import CasinoTable from "@/components/common/CasinoTable";
-import ArticleBody from "@/components/common/ArticleBody";
-import { liveCasinoContent } from "@/lib/content/live-casino";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { casinoList } from "@/lib/data/casinos";
 import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
   title: "كازينو مباشر أونلاين مصر 2026 | أفضل مواقع لايف",
   description:
     "استكشف أفضل كازينوهات مباشر أونلاين في مصر 2026: ترخيص موثوق، دعم العربية، إيداع وسحب بالجنيه المصري.",
-  alternates: { canonical: absoluteUrl("/كازينو-مباشر") },
+  alternates: { canonical: absoluteUrl(`${ROUTES.liveCasino}/`) },
 };
 
 const benefits = [
@@ -73,7 +72,7 @@ export default function LiveCasinoPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={liveCasinoContent} />
+      <ArticleBodyLoader kind="liveCasino" />
     </>
   );
 }

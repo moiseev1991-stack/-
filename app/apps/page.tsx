@@ -18,8 +18,7 @@ import {
 import { jsonLdBreadcrumbFromHero, pageMetadata } from "@/lib/seo/metadata";
 import { ROUTES } from "@/lib/routes";
 import Link from "next/link";
-import ArticleBody from "@/components/common/ArticleBody";
-import { appsContent } from "@/lib/content/apps";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 export const metadata = pageMetadata(appsPageBundle);
 
@@ -189,7 +188,7 @@ export default function AppsPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={appsContent} />
+      <ArticleBodyLoader kind="apps" />
     </>
   );
 }

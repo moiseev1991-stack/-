@@ -1,8 +1,7 @@
 import { gamesList } from "@/lib/data/games";
 import GameCard from "@/components/common/GameCard";
-import ArticleBody from "@/components/common/ArticleBody";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import PageShell from "@/components/internal/PageShell";
-import { freeGamesContent } from "@/lib/content/free-games";
 
 export default function FreeGamesPage() {
   return (
@@ -44,7 +43,7 @@ export default function FreeGamesPage() {
             ))}
           </div>
         </section>
-        <ArticleBody content={freeGamesContent} />
+        <ArticleBodyLoader kind="freeGames" />
       </PageShell>
     </>
   );

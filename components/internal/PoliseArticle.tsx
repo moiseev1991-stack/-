@@ -23,7 +23,7 @@ export default function PoliseArticle({ slug, title, markdown }: Props) {
             return (
               <Link
                 key={p.slug}
-                href={`/${p.slug}`}
+                href={p.path}
                 className={
                   active
                     ? "font-bold text-[#8B6914]"

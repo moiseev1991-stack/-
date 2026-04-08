@@ -19,8 +19,7 @@ import { jsonLdBreadcrumbFromHero, pageMetadata } from "@/lib/seo/metadata";
 import { ROUTES } from "@/lib/routes";
 import InfoCardsSection from "@/components/internal/InfoCardsSection";
 import ContentSection from "@/components/internal/ContentSection";
-import ArticleBody from "@/components/common/ArticleBody";
-import { paymentContent } from "@/lib/content/payment";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 
 export const metadata = pageMetadata(paymentPageBundle);
 
@@ -118,7 +117,7 @@ export default function PaymentPage() {
           buttonHref={ROUTES.paymentFastest}
         />
       </PageShell>
-      <ArticleBody content={paymentContent} />
+      <ArticleBodyLoader kind="payment" />
     </>
   );
 }

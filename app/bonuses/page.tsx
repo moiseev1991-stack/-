@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import CasinoTable from "@/components/common/CasinoTable";
-import ArticleBody from "@/components/common/ArticleBody";
-import { bonusesContent } from "@/lib/content/bonuses";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { casinoList } from "@/lib/data/casinos";
 import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
   title: "بونص ترحيب كازينو مصر 2026 | أفضل العروض الموثوقة",
   description:
     "اكتشف أفضل بونص ترحيب كازينو في مصر 2026: خطوات التفعيل، شروط الرهان، وطرق دفع محلية.",
-  alternates: { canonical: absoluteUrl("/بونص-ترحيب") },
+  alternates: { canonical: absoluteUrl(`${ROUTES.bonuses}/`) },
 };
 
 const benefits = [
@@ -84,7 +83,7 @@ export default function BonusesPage() {
           </Link>
         </p>
       </PageShell>
-      <ArticleBody content={bonusesContent} />
+      <ArticleBodyLoader kind="bonuses" />
     </>
   );
 }

@@ -67,7 +67,7 @@ export default function Footer() {
             {POLISE_PAGES.map((p) => (
               <li key={p.slug}>
                 <Link
-                  href={`/${p.slug}`}
+                  href={p.path}
                   className="text-sm text-[#9A9A9A] transition-colors hover:text-[#E8B86D]"
                 >
                   {p.label}

@@ -14,8 +14,7 @@ import GameTypesSection from "@/components/sections/GameTypesSection";
 import MobileGamingSection from "@/components/sections/MobileGamingSection";
 import TraditionalCasinosSection from "@/components/sections/TraditionalCasinosSection";
 import FaqSection from "@/components/sections/FaqSection";
-import ArticleBody from "@/components/common/ArticleBody";
-import { homeContent } from "@/lib/content/home";
+import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { absoluteUrl } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
@@ -71,7 +70,7 @@ export default function HomePage() {
       <MobileGamingSection />
       <TraditionalCasinosSection />
       <BlacklistSection casinos={blacklistedCasinos} />
-      <ArticleBody content={homeContent} />
+      <ArticleBodyLoader kind="home" />
       <FaqSection items={mainFaq} />
     </>
   );
