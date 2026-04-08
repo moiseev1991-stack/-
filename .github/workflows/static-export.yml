@@ -5,6 +5,10 @@ on:
     branches: [master, main]
   workflow_dispatch:
 
+# Allow writing back to the repo (push to deploy branch)
+permissions:
+  contents: write
+
 jobs:
   export:
     runs-on: ubuntu-latest
@@ -16,8 +20,23 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build:static
+
       - name: Create Arabic directory aliases in out/
         run: node scripts/add-arabic-aliases.mjs
+
+      # Push the compiled out/ folder as the root of the "deploy" branch.
+      # Plesk should be pointed at this branch, not master.
+      - name: Push out/ to deploy branch
+        run: |
+          cd out
+          git init -b deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "deploy: static export from ${{ github.sha }}"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git push --force origin deploy
+
       - uses: actions/upload-artifact@v4
         with:
           name: static-site
