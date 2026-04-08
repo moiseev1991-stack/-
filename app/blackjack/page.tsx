@@ -8,12 +8,13 @@ import FaqSection from "@/components/sections/FaqSection";
 import SectionTitle from "@/components/common/SectionTitle";
 import ArticleBody from "@/components/common/ArticleBody";
 import { blackjackContent } from "@/lib/content/blackjack";
+import { absoluteUrl } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   title: "أفضل كازينوهات البلاك جاك 2026 | كازينو عربي أونلاين",
   description:
     "العب البلاك جاك أونلاين. مع الاستراتيجية الصحيحة قلل ميزة الكازينو إلى أقل من 0.5%.",
-  alternates: { canonical: "https://كازينوعربياونلاين.com/بلاك-جاك/" },
+  alternates: { canonical: absoluteUrl("/بلاك-جاك/") },
 };
 
 const schemaData = {

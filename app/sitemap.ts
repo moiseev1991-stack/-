@@ -3,6 +3,8 @@ import { POLISE_PAGES } from "@/lib/data/polise-pages";
 import { ROUTES } from "@/lib/routes";
 import { SITE_URL } from "@/lib/seo/site";
 
+export const dynamic = "force-static";
+
 const routes = [
   ROUTES.home,
   ROUTES.realMoney,

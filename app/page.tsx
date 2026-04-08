@@ -16,12 +16,13 @@ import TraditionalCasinosSection from "@/components/sections/TraditionalCasinosS
 import FaqSection from "@/components/sections/FaqSection";
 import ArticleBody from "@/components/common/ArticleBody";
 import { homeContent } from "@/lib/content/home";
+import { absoluteUrl } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   title: "أفضل كازينوهات الإنترنت المصرية لعام 2026 | كازينو عربي أونلاين",
   description:
     "اكتشف أفضل كازينوهات الإنترنت للاعبين المصريين. مكافآت ضخمة، سحب سريع، وألعاب متنوعة. تقييمات موثوقة من خبراء الكازينو.",
-  alternates: { canonical: "https://كازينوعربياونلاين.com/" },
+  alternates: { canonical: absoluteUrl("/") },
   openGraph: { locale: "ar_EG", type: "website" },
 };
 

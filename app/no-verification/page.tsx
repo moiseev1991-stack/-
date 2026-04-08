@@ -6,13 +6,14 @@ import { casinoList } from "@/lib/data/casinos";
 import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
 import { ROUTES } from "@/lib/routes";
+import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "كازينو بدون توثيق مصر 2026 | تسجيل سريع آمن",
   description:
     "دليل 2026 للكازينو بدون توثيق في مصر: مقارنة المواقع، طرق الدفع، المخاطر القانونية، ونصائح اختيار آمن.",
-  alternates: { canonical: "https://كازينوعربياونلاين.com/بدون-توثيق" },
+  alternates: { canonical: absoluteUrl("/بدون-توثيق") },
 };
 
 const benefits = [

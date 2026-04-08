@@ -7,13 +7,14 @@ import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
 import CasinoListSection from "@/components/sections/CasinoListSection";
 import { ROUTES } from "@/lib/routes";
+import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "كازينو مباشر أونلاين مصر 2026 | أفضل مواقع لايف",
   description:
     "استكشف أفضل كازينوهات مباشر أونلاين في مصر 2026: ترخيص موثوق، دعم العربية، إيداع وسحب بالجنيه المصري.",
-  alternates: { canonical: "https://كازينوعربياونلاين.com/كازينو-مباشر" },
+  alternates: { canonical: absoluteUrl("/كازينو-مباشر") },
 };
 
 const benefits = [

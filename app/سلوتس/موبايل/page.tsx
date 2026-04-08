@@ -1,5 +1,2 @@
-import { redirect } from "next/navigation";
-
-export default function SlotsMobileArRedirect() {
-  redirect("/سلوتس-موبايل");
-}
+export { metadata } from "@/app/سلوتس-موبايل/page";
+export { default } from "@/app/سلوتس-موبايل/page";

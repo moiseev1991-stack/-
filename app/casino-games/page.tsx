@@ -1,5 +1,2 @@
-import { redirect } from "next/navigation";
-
-export default function CasinoGamesLegacyPage() {
-  redirect("/games");
-}
+export { metadata } from "@/app/العاب-كازينو/page";
+export { default } from "@/app/العاب-كازينو/page";

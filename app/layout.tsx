@@ -5,7 +5,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-// Avoid static prerender of Arabic-segment routes (redirect pages) — triggers InvalidCharacterError in Next 16
+// Avoid static prerender of Arabic-segment routes on Windows build workers.
 export const dynamic = "force-dynamic";
 
 const cairo = Cairo({

@@ -1,5 +1,2 @@
-import { redirect } from "next/navigation";
-
-export default function FastWithdrawalArRedirect() {
-  redirect("/اسرع-سحب");
-}
+export { metadata } from "@/app/اسرع-سحب/page";
+export { default } from "@/app/اسرع-سحب/page";

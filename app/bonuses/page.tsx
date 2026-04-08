@@ -6,13 +6,14 @@ import { casinoList } from "@/lib/data/casinos";
 import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
 import { ROUTES } from "@/lib/routes";
+import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "بونص ترحيب كازينو مصر 2026 | أفضل العروض الموثوقة",
   description:
     "اكتشف أفضل بونص ترحيب كازينو في مصر 2026: خطوات التفعيل، شروط الرهان، وطرق دفع محلية.",
-  alternates: { canonical: "https://كازينوعربياونلاين.com/بونص-ترحيب" },
+  alternates: { canonical: absoluteUrl("/بونص-ترحيب") },
 };
 
 const benefits = [
