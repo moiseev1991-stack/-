@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 127.0.0.1 --port 3050",
     "build": "next build",
-    "start": "next start"
+    "start": "next start --hostname 127.0.0.1 --port 3050",
+    "sync:assets": "node scripts/sync-assets.mjs"
   },
   "dependencies": {
     "next": "16.2.2",
