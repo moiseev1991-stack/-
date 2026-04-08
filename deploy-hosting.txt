@@ -1,15 +1,15 @@
-Что сделать на Plesk (без этого сайт не запустится):
+Вариант A — Node.js (полный Next.js, редиректы из next.config работают)
 
-1) Включить Node.js для домена, корень приложения = папка с package.json (обычно httpdocs).
+1) В Plesk включить Node.js для домена, корень = папка с package.json (httpdocs).
+2) На сервере: npm ci && npm run build && npm start (или стартовый файл server.js).
+3) SSL: выбрать сертификат, если включён HTTPS-редирект.
+4) Убрать лишний index.html-заглушку в корне, если мешает.
 
-2) После git pull на сервере выполнить:
-   npm ci
-   npm run build
+Вариант B — только статика (без Node: обычный Apache)
 
-3) Запуск: npm start  (или стартовый файл server.js в настройках Node).
+1) На GitHub: Actions → workflow "Static export" → последний успешный запуск.
+2) Скачать артефакт static-site (папка out).
+3) Содержимое out загрузить в httpdocs (заменить файлы), старый index.html удалить.
+4) Редиректы из next.config на статике не работают — используются прямые арабские URL из меню.
 
-4) SSL: выбрать сертификат (Let’s Encrypt), если включён редирект на HTTPS.
-
-5) Удалить лишний index.html-заглушку в httpdocs, если мешает.
-
-Репозиторий сам по себе «готов»; сборка и node_modules появляются на сервере после шагов 2–3.
+Сборка static-site выполняется на Linux (GitHub); локально на Windows npm run build:static может падать.

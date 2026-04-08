@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1 --port 3050",
     "build": "next build && node scripts/prepare-standalone.mjs",
+    "build:static": "node scripts/run-static-export.mjs",
     "start": "node server.js",
     "sync:assets": "node scripts/sync-assets.mjs"
   },

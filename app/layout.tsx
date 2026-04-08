@@ -5,7 +5,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-// Avoid static prerender of Arabic-segment routes on Windows build workers.
+// Avoid static prerender of Arabic-segment routes (InvalidCharacterError in Next 16 on some workers).
 export const dynamic = "force-dynamic";
 
 const cairo = Cairo({

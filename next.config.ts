@@ -1,12 +1,26 @@
 import type { NextConfig } from "next";
 
+/** Set STATIC_EXPORT=1 for a static HTML build (Apache/nginx without Node.js). */
+const staticExport = process.env.STATIC_EXPORT === "1";
+
 const nextConfig: NextConfig = {
-  output: "standalone",
+  ...(staticExport
+    ? {
+        output: "export" as const,
+        trailingSlash: true,
+        skipTrailingSlashRedirect: true,
+      }
+    : {
+        output: "standalone",
+      }),
   images: {
     remotePatterns: [],
     unoptimized: true,
   },
   async rewrites() {
+    if (staticExport) {
+      return { beforeFiles: [], afterFiles: [], fallback: [] };
+    }
     return {
       beforeFiles: [
         // Canonical Arabic one-level URLs -> stable internal routes
@@ -39,6 +53,9 @@ const nextConfig: NextConfig = {
     };
   },
   async redirects() {
+    if (staticExport) {
+      return [];
+    }
     return [
       // Latin / legacy paths -> canonical Arabic one-level paths
       { source: "/real-money", destination: "/كازينو-حقيقي", permanent: true },
