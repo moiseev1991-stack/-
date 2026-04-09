@@ -9,6 +9,8 @@ export interface Casino {
   gamesCount?: string;
   paymentMethods: string[];
   affiliateLink: string;
+  /** If set, primary affiliate CTA button shows this text instead of «إلعب الآن». */
+  affiliateLinkLabel?: string;
   reviewLink?: string;
   isTopRated?: boolean;
   expertRating?: number;

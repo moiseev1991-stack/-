@@ -63,7 +63,18 @@ const nextConfig: NextConfig = {
     };
   },
   async redirects() {
-    return [];
+    // STATIC_EXPORT=1: redirects are not emitted; run scripts/add-arabic-aliases.mjs after build
+    // so out/مراجعات/ mirrors out/reviews/ for Arabic review URLs on static hosts.
+    if (staticExport) {
+      return [];
+    }
+    return [
+      {
+        source: "/%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A7%D8%AA/:slug",
+        destination: "/reviews/:slug",
+        permanent: true,
+      },
+    ];
   },
 };
 

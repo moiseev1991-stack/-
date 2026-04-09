@@ -35,6 +35,8 @@ const COPIES = [
   ["info/disclaimer-and-responsible-gaming",   "اخلاء-المسوولية-والمقامرة-المسوولة"],
   ["info/contact-us",                          "اتصل-بنا"],
   ["info/how-we-rate-casinos",                 "كيف-نقيم-الكازينوهات"],
+  // Nested review pages: copy entire /reviews tree to Arabic "reviews" path
+  ["reviews", "مراجعات"],
 ];
 
 let errors = 0;

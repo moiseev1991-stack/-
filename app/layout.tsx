@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "أفضل كازينوهات الإنترنت المصرية لعام 2026 | كازينو عربي أونلاين",
   description:
     "اكتشف أفضل كازينوهات الإنترنت للاعبين المصريين. مكافآت ضخمة، سحب سريع، وألعاب متنوعة. تقييمات موثوقة من خبراء الكازينو.",
+  verification: {
+    google: "CRNURpE3F0v9PhBpEQ40fjedcL2RoIjPfSCCbdwPSCc",
+  },
   openGraph: { locale: "ar_EG", type: "website" },
   icons: {
     icon: [
@@ -38,8 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         style={{ fontFamily: "var(--font-cairo), Cairo, sans-serif" }}
       >
         <Header />
-        <main className="flex-1">
-          <h2 className="sr-only">أقسام الصفحة</h2>
+        <main className="flex-1" aria-label="محتوى الصفحة">
           {children}
         </main>
         <Footer />

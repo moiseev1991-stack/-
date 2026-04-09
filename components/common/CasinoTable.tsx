@@ -102,7 +102,7 @@ export default function CasinoTable({ casinos, title }: Props) {
                       rel="noopener noreferrer sponsored"
                       className="inline-flex min-h-[40px] min-w-[6.5rem] items-center justify-center rounded-lg bg-[#10B981] px-4 text-sm font-bold text-white transition-colors hover:bg-[#0EA572]"
                     >
-                      إلعب الآن
+                      {casino.affiliateLinkLabel ?? "إلعب الآن"}
                     </Link>
                   </td>
                 </tr>

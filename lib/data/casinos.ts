@@ -27,8 +27,9 @@ export const casinoList: Casino[] = [
     gamesCount: "2,000",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller", "paypal", "paysafecard"],
     affiliateLink: "https://888starz-africa.com",
+    affiliateLinkLabel: "888Starz",
     isTopRated: true,
-    reviewLink: "/مراجعات/888starz",
+    reviewLink: "/reviews/888starz",
     expertRating: 4.6,
     launchedYear: 1997,
   },
@@ -57,7 +58,7 @@ export const casinoList: Casino[] = [
     gamesCount: "+550",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller"],
     affiliateLink: "#",
-    reviewLink: "/مراجعات/spin-casino",
+    reviewLink: "/reviews/spin-casino",
     expertRating: 4.3,
     launchedYear: 2001,
   },
@@ -85,7 +86,7 @@ export const casinoList: Casino[] = [
     gamesCount: "+450",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller"],
     affiliateLink: "#",
-    reviewLink: "/مراجعات/ruby-fortune",
+    reviewLink: "/reviews/ruby-fortune",
     launchedYear: 2003,
   },
   {
@@ -99,7 +100,7 @@ export const casinoList: Casino[] = [
     gamesCount: "+500",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller"],
     affiliateLink: "#",
-    reviewLink: "/مراجعات/jackpot-city",
+    reviewLink: "/reviews/jackpot-city",
     launchedYear: 1998,
   },
   {
@@ -116,6 +117,9 @@ export const casinoList: Casino[] = [
     launchedYear: 2020,
   },
 ];
+
+/** Same entries as `casinoList`, ordered by `rank` ascending (TOP #1 first). */
+export const casinoListByRank: Casino[] = [...casinoList].sort((a, b) => a.rank - b.rank);
 
 export const blacklistedCasinos: BlacklistedCasino[] = [
   {

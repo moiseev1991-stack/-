@@ -70,7 +70,7 @@ export default function CasinoCard({ casino }: Props) {
           rel="noopener noreferrer sponsored"
           className="mb-4 flex h-11 w-full shrink-0 items-center justify-center whitespace-nowrap rounded-lg bg-[#10B981] px-4 text-sm font-bold leading-none text-white transition-colors hover:bg-[#0EA572]"
         >
-          إلعب الآن
+          {casino.affiliateLinkLabel ?? "إلعب الآن"}
         </Link>
 
         <div className="mb-4 border-t border-[#F0EDE5]" />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { casinoList, blacklistedCasinos } from "@/lib/data/casinos";
+import { casinoListByRank, blacklistedCasinos } from "@/lib/data/casinos";
 import { gamesList } from "@/lib/data/games";
 import { mainFaq } from "@/lib/data/faq";
 
@@ -36,7 +36,7 @@ export default function HomePage() {
             "@context": "https://schema.org",
             "@type": "ItemList",
             name: "أفضل كازينوهات الإنترنت في مصر 2026",
-            itemListElement: casinoList.map((c) => ({
+            itemListElement: casinoListByRank.map((c) => ({
               "@type": "ListItem",
               position: c.rank,
               name: c.name,
@@ -62,8 +62,8 @@ export default function HomePage() {
 
       <HeroSection />
       <TrustBar />
-      <CasinoListSection casinos={casinoList} />
-      <TopTableSection casinos={casinoList} />
+      <CasinoListSection casinos={casinoListByRank} />
+      <TopTableSection casinos={casinoListByRank} />
       <FreeGamesSection games={gamesList} />
       <HowWeRateSection />
       <GameTypesSection />
