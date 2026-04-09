@@ -1,4 +1,5 @@
 import { Casino, BlacklistedCasino } from "../types/casino";
+import { reviewPublicPath } from "../routes";
 
 export const casinoList: Casino[] = [
   {
@@ -29,7 +30,7 @@ export const casinoList: Casino[] = [
     affiliateLink: "https://888starz-africa.com",
     affiliateLinkLabel: "888Starz",
     isTopRated: true,
-    reviewLink: "/reviews/888starz",
+    reviewLink: reviewPublicPath("888starz"),
     expertRating: 4.6,
     launchedYear: 1997,
   },
@@ -58,7 +59,7 @@ export const casinoList: Casino[] = [
     gamesCount: "+550",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller"],
     affiliateLink: "#",
-    reviewLink: "/reviews/spin-casino",
+    reviewLink: reviewPublicPath("spin-casino"),
     expertRating: 4.3,
     launchedYear: 2001,
   },
@@ -86,7 +87,7 @@ export const casinoList: Casino[] = [
     gamesCount: "+450",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller"],
     affiliateLink: "#",
-    reviewLink: "/reviews/ruby-fortune",
+    reviewLink: reviewPublicPath("ruby-fortune"),
     launchedYear: 2003,
   },
   {
@@ -100,7 +101,7 @@ export const casinoList: Casino[] = [
     gamesCount: "+500",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller"],
     affiliateLink: "#",
-    reviewLink: "/reviews/jackpot-city",
+    reviewLink: reviewPublicPath("jackpot-city"),
     launchedYear: 1998,
   },
   {

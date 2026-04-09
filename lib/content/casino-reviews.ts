@@ -1,6 +1,6 @@
 import type { FaqItem } from "@/lib/types/casino";
 
-/** Rich review copy for /reviews/[slug] — SEO + conversion (Arabic). */
+/** Rich review copy for casino review pages (public URL: /مراجعات/[slug], internal: /reviews/[slug]). */
 export interface CasinoReviewCopy {
   /** Hero subline (PageHero description) */
   summary: string;

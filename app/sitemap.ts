@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { POLISE_PAGES } from "@/lib/data/polise-pages";
-import { ROUTES } from "@/lib/routes";
+import { reviewPublicPath, ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
 export const dynamic = "force-static";
@@ -13,7 +13,7 @@ const extraAppRoutes = ["/new-casinos", "/casino-games", "/payment/fast-withdraw
 const routes = [
   ...new Set([
     ROUTES.home,
-    ...reviewSlugs.map((s) => `/reviews/${s}`),
+    ...reviewSlugs.map((s) => reviewPublicPath(s)),
     ROUTES.realMoney,
     ROUTES.newCasinos,
     ROUTES.games,

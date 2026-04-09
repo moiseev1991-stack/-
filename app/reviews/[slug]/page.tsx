@@ -9,7 +9,8 @@ import PageShell from "@/components/internal/PageShell";
 import { casinoReviewSections } from "@/lib/content/casino-reviews";
 import { casinoList } from "@/lib/data/casinos";
 import { breadcrumbListJsonLd, faqPageJsonLd } from "@/lib/seo/jsonld";
-import { SITE_URL } from "@/lib/seo/site";
+import { reviewPublicPath } from "@/lib/routes";
+import { absoluteUrl } from "@/lib/seo/site";
 
 function reviewSlugs(): string[] {
   return casinoList.filter((c) => c.reviewLink).map((c) => c.id);
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!casino || !copy) {
     notFound();
   }
-  const path = `/reviews/${slug}`;
+  const publicPath = reviewPublicPath(slug);
+  const canonical = absoluteUrl(publicPath);
   const title = `مراجعة ${casino.name} 2026 | بونص، سحب، وآراء الخبراء`;
   const description = [
     `مراجعة ${casino.name} 2026: مكافأة مذكورة "${casino.bonus}".`,
@@ -38,13 +40,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    alternates: { canonical: `${SITE_URL}${path}` },
+    alternates: { canonical },
     openGraph: {
       locale: "ar_EG",
       type: "article",
       title,
       description,
-      url: `${SITE_URL}${path}`,
+      url: canonical,
     },
   };
 }
@@ -79,7 +81,7 @@ export default async function CasinoReviewPage({ params }: PageProps) {
 
   const breadcrumb = [
     { label: "الرئيسية", href: "/" },
-    { label: `مراجعة ${casino.name}`, href: `/reviews/${slug}` },
+    { label: `مراجعة ${casino.name}`, href: reviewPublicPath(slug) },
   ];
 
   const jsonLdBreadcrumb = breadcrumb.map((b) => ({

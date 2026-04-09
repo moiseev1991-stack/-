@@ -8,6 +8,13 @@ export function encodeRoutePath(path: string): string {
   return encodeURI(path);
 }
 
+/** Public Arabic URL base for casino reviews (`app/reviews/[slug]` is the internal route). */
+export const REVIEW_PUBLIC_PREFIX = "/مراجعات";
+
+export function reviewPublicPath(slug: string): string {
+  return `${REVIEW_PUBLIC_PREFIX}/${slug}`;
+}
+
 export const ROUTES = {
   home: "/",
   payment: "/طرق-الدفع",

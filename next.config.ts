@@ -49,6 +49,12 @@ const nextConfig: NextConfig = {
         { source: "/%D8%A8%D9%88%D9%86%D8%B5-%D8%AA%D8%B1%D8%AD%D9%8A%D8%A8", destination: "/bonuses" },
         { source: "/%D8%A8%D8%AF%D9%88%D9%86-%D8%AA%D9%88%D8%AB%D9%8A%D9%82", destination: "/no-verification" },
 
+        // Arabic review URLs -> internal /reviews/[slug] (public URL stays /مراجعات/...)
+        {
+          source: "/%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A7%D8%AA/:slug",
+          destination: "/reviews/:slug",
+        },
+
         // Arabic legal pages -> stable internal policy routes
         { source: "/%D9%85%D9%86-%D9%86%D8%AD%D9%86", destination: "/info/about-us" },
         { source: "/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9-%D8%A7%D9%84%D8%AE%D8%B5%D9%88%D8%B5%D9%8A%D8%A9", destination: "/info/privacy-policy" },
@@ -63,15 +69,15 @@ const nextConfig: NextConfig = {
     };
   },
   async redirects() {
-    // STATIC_EXPORT=1: redirects are not emitted; run scripts/add-arabic-aliases.mjs after build
-    // so out/مراجعات/ mirrors out/reviews/ for Arabic review URLs on static hosts.
+    // STATIC_EXPORT=1: no server redirects; use add-arabic-aliases.mjs so out/مراجعات/ mirrors out/reviews/.
     if (staticExport) {
       return [];
     }
     return [
+      // Canonical public URLs are Arabic /مراجعات/... — redirect legacy /reviews/... there
       {
-        source: "/%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A7%D8%AA/:slug",
-        destination: "/reviews/:slug",
+        source: "/reviews/:slug",
+        destination: "/%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A7%D8%AA/:slug",
         permanent: true,
       },
     ];
