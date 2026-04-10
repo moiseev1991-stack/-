@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { FaqItem } from "./casino";
 
 export interface BreadcrumbItem {
@@ -7,7 +8,7 @@ export interface BreadcrumbItem {
 
 export interface PageHeroData {
   h1: string;
-  description: string;
+  description: string | ReactNode;
   breadcrumb: BreadcrumbItem[];
   /** 2–4 benefit lines */
   benefits?: string[];

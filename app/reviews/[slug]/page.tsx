@@ -79,6 +79,27 @@ export default async function CasinoReviewPage({ params }: PageProps) {
     notFound();
   }
 
+  const descriptionNode = (() => {
+    const text = copy.summary;
+    if (!casino.siteUrl) return text;
+    const idx = text.indexOf(casino.name);
+    if (idx === -1) return text;
+    return (
+      <>
+        {text.slice(0, idx)}
+        <a
+          href={casino.siteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#C8963E] underline underline-offset-2 hover:text-[#e0aa50]"
+        >
+          {casino.name}
+        </a>
+        {text.slice(idx + casino.name.length)}
+      </>
+    );
+  })();
+
   const breadcrumb = [
     { label: "الرئيسية", href: "/" },
     { label: `مراجعة ${casino.name}`, href: reviewPublicPath(slug) },
@@ -110,7 +131,7 @@ export default async function CasinoReviewPage({ params }: PageProps) {
 
       <PageHero
         h1={`مراجعة ${casino.name} 2026`}
-        description={copy.summary}
+        description={descriptionNode}
         breadcrumb={breadcrumb}
         benefits={[
           ...(casino.expertRating != null

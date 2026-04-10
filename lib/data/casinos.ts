@@ -28,6 +28,7 @@ export const casinoList: Casino[] = [
     gamesCount: "2,000",
     paymentMethods: ["visa", "mastercard", "skrill", "neteller", "paypal", "paysafecard"],
     affiliateLink: "#",
+    siteUrl: "https://888starz-africa.com/",
     isTopRated: true,
     reviewLink: reviewPublicPath("888starz"),
     expertRating: 4.6,
