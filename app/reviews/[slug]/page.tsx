@@ -123,7 +123,7 @@ export default async function CasinoReviewPage({ params }: PageProps) {
         cta={{
           label: "افتح الحساب والعب الآن",
           href: casino.affiliateLink,
-          external: true,
+          external: false,
         }}
       />
 
@@ -160,7 +160,10 @@ export default async function CasinoReviewPage({ params }: PageProps) {
               />
               <div className="min-w-0 flex-1 text-center sm:text-start">
                 <h2 id="quick-glance" className="text-lg font-bold text-[#1A1A1A]">
-                  لمحة سريعة ومكافأة الترحيب
+                  <Link href="/" className="text-[#C8963E] hover:underline underline-offset-4">
+                    {casino.name}
+                  </Link>
+                  {" "}— لمحة سريعة ومكافأة الترحيب
                 </h2>
                 <p className="mt-2 text-sm font-semibold leading-relaxed text-[#B8862F]">{casino.bonus}</p>
                 <p className="mt-3 text-sm leading-relaxed text-[#444]">{copy.intro}</p>
