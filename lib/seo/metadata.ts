@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
 import type { PageSeoBundle } from "@/lib/types/page";
-import { SITE_URL } from "./site";
+import { absoluteUrl } from "./site";
 
 export function pageMetadata(bundle: PageSeoBundle): Metadata {
   const path = bundle.meta.canonicalPath.startsWith("/")
     ? bundle.meta.canonicalPath
     : `/${bundle.meta.canonicalPath}`;
+  // absoluteUrl() percent-encodes Arabic segments so the canonical and og:url
+  // stay ASCII-safe across crawlers and social-card parsers.
+  const canonical = absoluteUrl(path);
   return {
     title: bundle.meta.title,
     description: bundle.meta.description,
-    alternates: { canonical: `${SITE_URL}${path}` },
+    alternates: { canonical },
     openGraph: {
       locale: "ar_EG",
       type: "website",
       title: bundle.meta.title,
       description: bundle.meta.description,
-      url: `${SITE_URL}${path}`,
+      url: canonical,
     },
   };
 }

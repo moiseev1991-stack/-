@@ -8,8 +8,12 @@ import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
 import { casinoReviewSections } from "@/lib/content/casino-reviews";
 import { casinoList } from "@/lib/data/casinos";
-import { breadcrumbListJsonLd, faqPageJsonLd } from "@/lib/seo/jsonld";
-import { reviewPublicPath } from "@/lib/routes";
+import {
+  breadcrumbListJsonLd,
+  casinoReviewJsonLd,
+  faqPageJsonLd,
+} from "@/lib/seo/jsonld";
+import { reviewPublicPath, ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
 function reviewSlugs(): string[] {
@@ -112,12 +116,32 @@ export default async function CasinoReviewPage({ params }: PageProps) {
 
   const paymentsAr = paymentLabelsAr(casino.paymentMethods);
 
+  const relatedReviews = casinoList
+    .filter((c) => c.reviewLink && c.id !== slug)
+    .slice(0, 3);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbListJsonLd(jsonLdBreadcrumb)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            casinoReviewJsonLd({
+              brandName: casino.name,
+              reviewUrl: absoluteUrl(reviewPublicPath(slug)),
+              brandUrl: casino.siteUrl,
+              // Only emit ratingValue when there's a visible editor score on the page
+              // (the trust strip below renders `${casino.expertRating}/5`).
+              ratingValue: casino.expertRating,
+              reviewBody: copy.summary,
+            })
+          ),
         }}
       />
       {copy.faq.length > 0 && (
@@ -311,6 +335,39 @@ export default async function CasinoReviewPage({ params }: PageProps) {
             </section>
           )}
 
+          {/* Related reviews */}
+          {relatedReviews.length > 0 && (
+            <section aria-labelledby="related-heading">
+              <h2 id="related-heading" className="mb-4 text-xl font-bold text-[#1A1A1A]">
+                مراجعات مشابهة
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {relatedReviews.map((r) => (
+                  <Link
+                    key={r.id}
+                    href={reviewPublicPath(r.id)}
+                    className="group block rounded-xl border border-[#E8E4DA] bg-white p-4 shadow-sm transition-colors hover:border-[#C8963E]/40 hover:bg-[#FFFCF7]"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[#A89878]">
+                      مراجعة
+                    </p>
+                    <p className="mt-1 text-base font-bold text-[#1A1A1A] group-hover:text-[#C8963E]">
+                      {r.name}
+                    </p>
+                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[#555]">
+                      {r.bonus}
+                    </p>
+                    {r.expertRating != null && (
+                      <p className="mt-2 text-xs font-semibold text-[#10B981]">
+                        تقييم: {r.expertRating}/5
+                      </p>
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Final CTAs */}
           <section className="flex flex-wrap gap-3 border-t border-[#F0EDE5] pt-6">
             <a
@@ -328,7 +385,7 @@ export default async function CasinoReviewPage({ params }: PageProps) {
               العودة للرئيسية
             </Link>
             <Link
-              href="/payment"
+              href={ROUTES.payment}
               className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-transparent px-2 text-sm font-medium text-[#C8963E] underline-offset-4 hover:underline"
             >
               دليل طرق الدفع

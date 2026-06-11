@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { POLISE_PAGES } from "@/lib/data/polise-pages";
-import { ROUTES } from "@/lib/routes";
+import { casinoList } from "@/lib/data/casinos";
+import { reviewPublicPath, ROUTES } from "@/lib/routes";
+
+const casinoReviewFooterLinks = casinoList
+  .filter((c) => c.reviewLink)
+  .slice(0, 4)
+  .map((c) => ({ label: `مراجعة ${c.name}`, href: reviewPublicPath(c.id) }));
 
 const cols = [
   {
@@ -10,6 +16,7 @@ const cols = [
       { label: "ألعاب الكازينو", href: ROUTES.games },
       { label: "تطبيقات الكازينو", href: ROUTES.apps },
       { label: "كازينو جديد", href: ROUTES.newCasinos },
+      { label: "كازينو مصر", href: "/كازينو-مصر/" },
     ],
   },
   {
@@ -19,14 +26,23 @@ const cols = [
       { label: "تطبيقات السلوتس", href: ROUTES.slotsMobile },
       { label: "روليت", href: ROUTES.roulette },
       { label: "بلاك جاك", href: ROUTES.blackjack },
+      { label: "ألعاب قمار", href: "/العاب-قمار/" },
+      { label: "لعبة الطيارة", href: "/لعبة-الطيارة/" },
     ],
   },
   {
-    title: "طرق الدفع",
+    title: "طرق الدفع والمراهنات",
     links: [
       { label: "أسرع سحب", href: ROUTES.paymentFastest },
       { label: "طرق الدفع", href: ROUTES.payment },
+      { label: "فودافون كاش", href: "/فودافون-كاش/" },
+      { label: "مواقع المراهنات", href: "/مراهنات/" },
+      { label: "تطبيقات المراهنات", href: "/تطبيقات-مراهنات/" },
     ],
+  },
+  {
+    title: "مراجعات الكازينوهات",
+    links: casinoReviewFooterLinks,
   },
 ];
 
@@ -36,7 +52,7 @@ export default function Footer() {
       <div className="h-0.5 bg-[#C8963E]" />
 
       <div className="mx-auto max-w-7xl px-4 py-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-4">
           {cols.map((col) => (
             <div key={col.title}>
               <h3 className="mb-3 text-base font-bold text-white">{col.title}</h3>

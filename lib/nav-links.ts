@@ -10,6 +10,7 @@ export const navLinks = [
   { label: "سلوتس للموبايل", href: ROUTES.slotsMobile },
   { label: "روليت", href: ROUTES.roulette },
   { label: "بلاك جاك", href: ROUTES.blackjack },
+  { label: "مواقع المراهنات", href: ROUTES.betting },
   { label: "أسرع سحب", href: ROUTES.paymentFastest },
   { label: "طرق الدفع", href: ROUTES.payment },
   { label: "ألعاب مجانية", href: ROUTES.freeGames },

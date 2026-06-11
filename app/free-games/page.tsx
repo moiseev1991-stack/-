@@ -1,7 +1,27 @@
+import type { Metadata } from "next";
 import { gamesList } from "@/lib/data/games";
 import GameCard from "@/components/common/GameCard";
 import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import PageShell from "@/components/internal/PageShell";
+import { ROUTES } from "@/lib/routes";
+import { absoluteUrl } from "@/lib/seo/site";
+
+const canonical = absoluteUrl(`${ROUTES.freeGames}/`);
+
+export const metadata: Metadata = {
+  title: "ألعاب كازينو مجانية 2026 — العب بدون تسجيل | كازينو عربي أونلاين",
+  description:
+    "ألعاب كازينو مجانية بدون تسجيل أو إيداع: سلوتس، روليت، بلاك جاك. جرّب اللعبة قبل أن تلعب بمال حقيقي.",
+  alternates: { canonical },
+  openGraph: {
+    locale: "ar_EG",
+    type: "website",
+    title: "ألعاب كازينو مجانية 2026 — العب بدون تسجيل | كازينو عربي أونلاين",
+    description:
+      "ألعاب كازينو مجانية بدون تسجيل أو إيداع: سلوتس، روليت، بلاك جاك. جرّب اللعبة قبل أن تلعب بمال حقيقي.",
+    url: canonical,
+  },
+};
 
 export default function FreeGamesPage() {
   return (

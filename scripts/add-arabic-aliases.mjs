@@ -35,6 +35,13 @@ const COPIES = [
   ["info/disclaimer-and-responsible-gaming",   "اخلاء-المسوولية-والمقامرة-المسوولة"],
   ["info/contact-us",                          "اتصل-بنا"],
   ["info/how-we-rate-casinos",                 "كيف-نقيم-الكازينوهات"],
+  // New SEO landing pages (skeletons)
+  ["betting",                                  "مراهنات"],
+  ["betting-apps",                             "تطبيقات-مراهنات"],
+  ["vodafone-cash",                            "فودافون-كاش"],
+  ["gambling-games",                           "العاب-قمار"],
+  ["casino-egypt",                             "كازينو-مصر"],
+  ["aviator",                                  "لعبة-الطيارة"],
   // Nested review pages: copy entire /reviews tree to Arabic "reviews" path
   ["reviews", "مراجعات"],
 ];

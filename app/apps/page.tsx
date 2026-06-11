@@ -182,6 +182,20 @@ export default function AppsPage() {
           buttonHref={ROUTES.slotsMobile}
         />
 
+        <section className="rounded-xl border border-[#E8E4DA] bg-[#FFFCF7] p-5 text-sm leading-relaxed text-[#555]">
+          <p>
+            <span className="font-semibold text-[#1A1A1A]">تبحث عن تطبيقات للمراهنات الرياضية بدل الكازينو؟</span>{" "}
+            راجع دليل{" "}
+            <Link
+              href={ROUTES.bettingApps}
+              className="text-[#C8963E] underline-offset-2 hover:underline"
+            >
+              تطبيقات المراهنات
+            </Link>
+            {" "}— قوائم منفصلة ومعايير اختيار خاصة.
+          </p>
+        </section>
+
         <p className="text-sm text-center">
           <Link href={ROUTES.payment} className="text-[#C8963E] hover:underline">
             طرق الدفع

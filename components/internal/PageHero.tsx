@@ -20,6 +20,34 @@ export default function PageHero({
           <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-8">
             {/* Text column */}
             <div className="max-w-xl">
+              {breadcrumb && breadcrumb.length > 0 && (
+                <nav
+                  aria-label="فتات الخبز"
+                  className="mb-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-[#C8C8C8]"
+                >
+                  {breadcrumb.map((item, i) => (
+                    <span key={`${item.href}-${i}`} className="flex items-center gap-1.5">
+                      {i > 0 && (
+                        <span className="select-none text-white/40" aria-hidden>
+                          ›
+                        </span>
+                      )}
+                      {i < breadcrumb.length - 1 ? (
+                        <Link
+                          href={item.href}
+                          className="transition-colors hover:text-[#E8B86D]"
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <span aria-current="page" className="font-medium text-[#E8B86D]">
+                          {item.label}
+                        </span>
+                      )}
+                    </span>
+                  ))}
+                </nav>
+              )}
               <h1
                 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl"
                 style={{ textShadow: "0 1px 3px rgba(0,0,0,0.45)" }}

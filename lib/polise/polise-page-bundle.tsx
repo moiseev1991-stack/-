@@ -4,7 +4,6 @@ import type { PolisePageDef } from "@/lib/data/polise-pages";
 import { getPolisePage } from "@/lib/data/polise-pages";
 import {
   extractPoliseMetaDescription,
-  extractPoliseMetaTitle,
   preparePoliseMarkdown,
   readPoliseFile,
 } from "@/lib/polise/load-polise";
@@ -21,12 +20,16 @@ export function createPolisePageExports(slug: string) {
 
   async function generateMetadata(): Promise<Metadata> {
     const raw = await readPoliseFile(pageDef.file);
-    const title = extractPoliseMetaTitle(raw) ?? pageDef.label;
+    // Always use the brand-unified title from POLISE_PAGES — the **Title:**
+    // front-matter inside polise/*.txt carries legacy per-page brand mess.
+    const title = pageDef.metaTitle;
     const description = extractPoliseMetaDescription(raw) ?? "";
     return {
       title,
       description,
       alternates: { canonical },
+      // Legal / boilerplate pages: keep them follow-able but out of the index.
+      ...(pageDef.noindex ? { robots: { index: false, follow: true } } : {}),
       openGraph: {
         locale: "ar_EG",
         type: "website",

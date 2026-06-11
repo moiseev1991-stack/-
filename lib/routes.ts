@@ -31,4 +31,11 @@ export const ROUTES = {
   noVerification: "/بدون-توثيق",
   blackjack: "/بلاك-جاك",
   freeGames: "/العاب-مجانية",
+  // SEO landing pages (skeleton-stage — text to be filled in later)
+  betting: "/مراهنات",
+  bettingApps: "/تطبيقات-مراهنات",
+  vodafoneCash: "/فودافون-كاش",
+  gamblingGames: "/العاب-قمار",
+  casinoEgypt: "/كازينو-مصر",
+  aviator: "/لعبة-الطيارة",
 } as const;

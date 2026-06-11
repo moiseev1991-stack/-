@@ -116,6 +116,24 @@ export default function PaymentPage() {
           buttonLabel="أسرع كازينوهات السحب"
           buttonHref={ROUTES.paymentFastest}
         />
+
+        <section
+          aria-labelledby="vodafone-cta"
+          className="rounded-xl border border-[#E8E4DA] bg-[#FFFCF7] p-6"
+        >
+          <h2 id="vodafone-cta" className="mb-2 text-lg font-bold text-[#1A1A1A]">
+            تدفع بفودافون كاش؟
+          </h2>
+          <p className="mb-4 text-sm leading-relaxed text-[#555]">
+            دليلنا الكامل لكازينوهات ومراهنات فودافون كاش في مصر: شروط الإيداع، أوقات السحب، والمواقع المتوافقة.
+          </p>
+          <a
+            href="/فودافون-كاش/"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#C8963E] px-5 text-sm font-bold text-white hover:bg-[#B8862F]"
+          >
+            دليل فودافون كاش
+          </a>
+        </section>
       </PageShell>
       <ArticleBodyLoader kind="payment" />
     </>

@@ -16,6 +16,7 @@ import TraditionalCasinosSection from "@/components/sections/TraditionalCasinosS
 import FaqSection from "@/components/sections/FaqSection";
 import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { absoluteUrl } from "@/lib/seo/site";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
 
 export const metadata: Metadata = {
   title: "أفضل كازينوهات الإنترنت المصرية لعام 2026 | كازينو عربي أونلاين",
@@ -29,6 +30,18 @@ export default function HomePage() {
   return (
     <>
       {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationJsonLd()),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteJsonLd()),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
