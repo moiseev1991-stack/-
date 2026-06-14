@@ -8,11 +8,13 @@ import CasinoListSection from "@/components/sections/CasinoListSection";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
+import { loadArticle } from "@/lib/articles";
+
+const liveArticle = loadArticle("live-casino");
 
 export const metadata: Metadata = {
-  title: "كازينو مباشر أونلاين مصر 2026 | أفضل مواقع لايف",
-  description:
-    "استكشف أفضل كازينوهات مباشر أونلاين في مصر 2026: ترخيص موثوق، دعم العربية، إيداع وسحب بالجنيه المصري.",
+  title: liveArticle.title,
+  description: liveArticle.description,
   alternates: { canonical: absoluteUrl(`${ROUTES.liveCasino}/`) },
 };
 
@@ -27,8 +29,8 @@ export default function LiveCasinoPage() {
   return (
     <>
       <PageHero
-        h1="كازينو مباشر أونلاين مصر 2026"
-        description="العب مع دلارات حقيقيين عبر بث مباشر — روليت، بلاك جاك، وباكارا من أفضل المواقع المرخّصة."
+        h1={liveArticle.h1}
+        description={liveArticle.intro}
         breadcrumb={[
           { label: "الرئيسية", href: "/" },
           { label: "كازينو مباشر", href: ROUTES.liveCasino },

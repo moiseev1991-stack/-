@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("roulette");
 
 export const roulettePageBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل مواقع الروليت في مصر 2026 | أوروبي وأمريكي ومباشر",
-    description:
-      "قارن كازينوهات الروليت: الأنواع، حافة الكازينو، واللعب التجريبي مقابل المال الحقيقي.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.roulette}/`,
   },
   hero: {
-    h1: "أفضل مواقع الروليت في مصر",
-    description:
-      "الروليت لعبة حظ بسيطة القواعد. اختر النسخة ذات حافة أقل (أوروبي/فرنسي) واضبط ميزانية واضحة.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "الروليت", href: ROUTES.roulette },

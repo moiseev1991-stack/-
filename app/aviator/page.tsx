@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import HubSkeleton from "@/components/internal/HubSkeleton";
+import ArticleContent from "@/components/internal/ArticleContent";
+import { loadArticle } from "@/lib/articles";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
-const TITLE = "لعبة الطيارة Aviator 2026 | الشرح وأفضل المواقع";
-const DESCRIPTION =
-  "كل ما تريد معرفته عن لعبة الطيارة Aviator: آلية اللعب، RTP، استراتيجيات، وأفضل المواقع التي تقدّمها للاعبين من مصر.";
+const article = loadArticle("aviator");
 const canonical = absoluteUrl(`${ROUTES.aviator}/`);
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: article.title,
+  description: article.description,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: article.title,
+    description: article.description,
     url: canonical,
   },
 };
@@ -25,9 +25,8 @@ export default function AviatorPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: "لعبة الطيارة — كيف تلعب وأين",
-        description:
-          "Aviator (لعبة الطيارة) لعبة كراش من Spribe — رهان واحد ومضاعف ينمو حتى تسحب. شرح الآلية، RTP، ونصائح للحدود.",
+        h1: article.h1,
+        description: article.intro,
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "لعبة الطيارة", href: ROUTES.aviator },
@@ -43,6 +42,7 @@ export default function AviatorPage() {
         },
       }}
       topCasinosTitle="أفضل المواقع التي تقدّم Aviator"
+      contentSlot={<ArticleContent markdown={article.body} />}
       faq={[
         {
           question: "ما RTP لعبة الطيارة Aviator؟",

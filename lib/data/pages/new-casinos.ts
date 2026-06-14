@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("new");
 
 export const newCasinosBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل الكازينوهات الجديدة في مصر 2026 | بونص إطلاق",
-    description:
-      "كازينوهات جديدة بمعايير أمان حديثة ومكافآت تنافسية. تعرف على كيفية تقييمنا قبل التسجيل.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.newCasinos}/`,
   },
   hero: {
-    h1: "أفضل الكازينوهات الجديدة في مصر",
-    description:
-      "الكازينوهات الجديدة تقدم غالباً تقنيات حديثة وعروضاً قوية، لكن يجب التحقق من الترخيص والسمعة. نعرض خيارات نراجعها وفق معايير صارمة.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "كازينو جديد", href: ROUTES.newCasinos },

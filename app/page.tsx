@@ -17,11 +17,13 @@ import FaqSection from "@/components/sections/FaqSection";
 import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { absoluteUrl } from "@/lib/seo/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
+import { loadArticle } from "@/lib/articles";
+
+const homeArticle = loadArticle("home");
 
 export const metadata: Metadata = {
-  title: "أفضل كازينوهات الإنترنت المصرية لعام 2026 | كازينو عربي أونلاين",
-  description:
-    "اكتشف أفضل كازينوهات الإنترنت للاعبين المصريين. مكافآت ضخمة، سحب سريع، وألعاب متنوعة. تقييمات موثوقة من خبراء الكازينو.",
+  title: homeArticle.title,
+  description: homeArticle.description,
   alternates: { canonical: absoluteUrl("/") },
   openGraph: { locale: "ar_EG", type: "website" },
 };

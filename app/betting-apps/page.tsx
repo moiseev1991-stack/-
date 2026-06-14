@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import HubSkeleton from "@/components/internal/HubSkeleton";
+import ArticleContent from "@/components/internal/ArticleContent";
+import { loadArticle } from "@/lib/articles";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
-const TITLE = "أفضل برامج وتطبيقات المراهنات 2026 | تحميل Android وiOS";
-const DESCRIPTION =
-  "تطبيقات مراهنات لمستخدمي مصر: Android (APK) وiOS، خطوات التثبيت، الأمان، وتجربة الاستخدام مقارنة بالمتصفح.";
+const article = loadArticle("betting-apps");
 const canonical = absoluteUrl(`${ROUTES.bettingApps}/`);
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: article.title,
+  description: article.description,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: article.title,
+    description: article.description,
     url: canonical,
   },
 };
@@ -25,9 +25,8 @@ export default function BettingAppsPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: "برنامج مراهنات — أفضل التطبيقات في مصر",
-        description:
-          "قارن أفضل تطبيقات المراهنات الرياضية: تجربة المستخدم، توافر التطبيق على Android (APK) وiOS، الأمان وسهولة الإيداع/السحب.",
+        h1: article.h1,
+        description: article.intro,
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "تطبيقات المراهنات", href: ROUTES.bettingApps },
@@ -43,6 +42,7 @@ export default function BettingAppsPage() {
         },
       }}
       topCasinosTitle="مواقع لها تطبيقات مراهنات موصى بها"
+      contentSlot={<ArticleContent markdown={article.body} />}
       faq={[
         {
           question: "هل تطبيقات المراهنات أأمن من المتصفح؟",

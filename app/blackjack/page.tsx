@@ -9,11 +9,13 @@ import SectionTitle from "@/components/common/SectionTitle";
 import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
+import { loadArticle } from "@/lib/articles";
+
+const blackjackArticle = loadArticle("blackjack");
 
 export const metadata: Metadata = {
-  title: "أفضل كازينوهات البلاك جاك 2026 | كازينو عربي أونلاين",
-  description:
-    "العب البلاك جاك أونلاين. مع الاستراتيجية الصحيحة قلل ميزة الكازينو إلى أقل من 0.5%.",
+  title: blackjackArticle.title,
+  description: blackjackArticle.description,
   alternates: { canonical: absoluteUrl(`${ROUTES.blackjack}/`) },
 };
 
@@ -62,8 +64,8 @@ export default function BlackjackPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
       <InnerLayout
-        h1="أفضل كازينوهات البلاك جاك 2026"
-        description="دليل البلاك جاك للاعبين العرب — الاستراتيجية الأساسية، أفضل الكازينوهات، وكيف تحقق أدنى ميزة للكازينو."
+        h1={blackjackArticle.h1}
+        description={blackjackArticle.intro}
         breadcrumb={[
           { label: "الرئيسية", href: "/" },
           { label: "بلاك جاك", href: ROUTES.blackjack },

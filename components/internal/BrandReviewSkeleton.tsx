@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import FaqAccordion from "@/components/common/FaqAccordion";
 import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
@@ -32,6 +33,8 @@ export interface BrandReviewProps {
   highlights: { label: string; value: string }[];
   /** Initial FAQ items (text team can extend) */
   faq: FaqItem[];
+  /** Editorial body — when provided, replaces the placeholder content slot */
+  contentSlot?: ReactNode;
 }
 
 /**
@@ -50,6 +53,7 @@ export default function BrandReviewSkeleton({
   editorialRating,
   highlights,
   faq,
+  contentSlot,
 }: BrandReviewProps) {
   const publicPath = reviewPublicPath(slug);
   const canonical = absoluteUrl(publicPath);
@@ -135,19 +139,27 @@ export default function BrandReviewSkeleton({
             </div>
           </section>
 
-          {/* Empty content slot — text team fills later */}
-          <section
-            aria-labelledby="content-slot"
-            className="rounded-xl border border-dashed border-[#E8E4DA] bg-[#FFFCF7] p-6 text-[#555]"
-          >
-            <h2 id="content-slot" className="mb-2 text-lg font-bold text-[#1A1A1A]">
-              ماذا يقدّم {brandName} للاعبين من مصر؟
-            </h2>
-            <p className="text-sm leading-relaxed">
-              مراجعتنا التحريرية الكاملة قيد التحضير. ستجد قريباً تفاصيل المكافأة، أسواق الرهان،
-              طرق الدفع المتاحة محلياً (بما فيها فودافون كاش)، وأوقات السحب الفعلية.
-            </p>
-          </section>
+          {contentSlot ? (
+            <section
+              aria-labelledby="content-slot"
+              className="rounded-xl border border-[#E8E4DA] bg-white p-6 shadow-sm"
+            >
+              {contentSlot}
+            </section>
+          ) : (
+            <section
+              aria-labelledby="content-slot"
+              className="rounded-xl border border-dashed border-[#E8E4DA] bg-[#FFFCF7] p-6 text-[#555]"
+            >
+              <h2 id="content-slot" className="mb-2 text-lg font-bold text-[#1A1A1A]">
+                ماذا يقدّم {brandName} للاعبين من مصر؟
+              </h2>
+              <p className="text-sm leading-relaxed">
+                مراجعتنا التحريرية الكاملة قيد التحضير. ستجد قريباً تفاصيل المكافأة، أسواق الرهان،
+                طرق الدفع المتاحة محلياً (بما فيها فودافون كاش)، وأوقات السحب الفعلية.
+              </p>
+            </section>
+          )}
 
           {/* FAQ slot */}
           {faq.length > 0 && (

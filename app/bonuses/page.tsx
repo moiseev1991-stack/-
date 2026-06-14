@@ -7,11 +7,13 @@ import PageShell from "@/components/internal/PageShell";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
+import { loadArticle } from "@/lib/articles";
+
+const bonusesArticle = loadArticle("bonuses");
 
 export const metadata: Metadata = {
-  title: "بونص ترحيب كازينو مصر 2026 | أفضل العروض الموثوقة",
-  description:
-    "اكتشف أفضل بونص ترحيب كازينو في مصر 2026: خطوات التفعيل، شروط الرهان، وطرق دفع محلية.",
+  title: bonusesArticle.title,
+  description: bonusesArticle.description,
   alternates: { canonical: absoluteUrl(`${ROUTES.bonuses}/`) },
 };
 
@@ -33,8 +35,8 @@ export default function BonusesPage() {
   return (
     <>
       <PageHero
-        h1="بونص ترحيب كازينو مصر 2026"
-        description="قارن أفضل عروض الترحيب وافهم شروط الرهان قبل الإيداع — دليل موثوق للمصريين."
+        h1={bonusesArticle.h1}
+        description={bonusesArticle.intro}
         breadcrumb={[
           { label: "الرئيسية", href: "/" },
           { label: "بونص ترحيب", href: ROUTES.bonuses },

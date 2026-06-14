@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
 import BrandReviewSkeleton from "@/components/internal/BrandReviewSkeleton";
+import ArticleContent from "@/components/internal/ArticleContent";
+import { loadArticle } from "@/lib/articles";
 import { reviewPublicPath } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
 const SLUG = "melbet";
 const BRAND = "Melbet";
-const TITLE = "مراجعة Melbet 2026 | بونص، تطبيق، سحب";
-const DESCRIPTION =
-  "مراجعة Melbet 2026 للاعبين العرب: التسجيل، البونص الترحيبي، التطبيق، الأسواق الرياضية وأوقات السحب.";
+const article = loadArticle("melbet");
 const canonical = absoluteUrl(reviewPublicPath(SLUG));
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: article.title,
+  description: article.description,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "article",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: article.title,
+    description: article.description,
     url: canonical,
   },
 };
@@ -28,15 +28,16 @@ export default function MelbetReviewPage() {
     <BrandReviewSkeleton
       slug={SLUG}
       brandName={BRAND}
-      metaTitle={TITLE}
-      metaDescription={DESCRIPTION}
-      h1="مراجعة ميلبيت Melbet"
-      intro="نراجع Melbet للاعبين العرب: التسجيل بسرعة، المكافأة الترحيبية وشروط الرهان، تطبيقات Android وiOS، وأوقات السحب الفعلية. النشر التحريري الكامل قيد التحضير."
+      metaTitle={article.title}
+      metaDescription={article.description}
+      h1={article.h1}
+      intro={article.intro}
       highlights={[
         { label: "أسواق الرهان", value: "+1000" },
         { label: "تطبيق", value: "Android · iOS" },
         { label: "البونص الترحيبي", value: "حتى 100%" },
       ]}
+      contentSlot={<ArticleContent markdown={article.body} />}
       faq={[
         {
           question: "هل يقبل Melbet اللاعبين من الدول العربية؟",

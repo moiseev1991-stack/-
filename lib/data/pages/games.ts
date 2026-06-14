@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("games");
 
 export const gamesPageBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل ألعاب الكازينو أونلاين في مصر 2026 | دليل الأنواع",
-    description:
-      "سلوتس، روليت، بلاك جاك، بوكر، وبث مباشر: كيف تختار اللعبة وتقارن الكازينوهات بأمان.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.games}/`,
   },
   hero: {
-    h1: "أفضل ألعاب الكازينو أونلاين في مصر",
-    description:
-      "من الألعاب البسيطة ذات الحظ إلى الألعاب التي ت rewarding للتعلم مثل البلاك جاك. ابدأ بما يناسب مستواك وحدودك.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "ألعاب الكازينو", href: ROUTES.games },

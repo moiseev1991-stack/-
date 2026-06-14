@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("payment");
 
 export const paymentPageBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل طرق الدفع في كازينوهات الإنترنت في مصر 2026 | إيداع وسحب آمن",
-    description:
-      "دليل طرق الدفع في الكازينو أونلاين لمصر: بطاقات، محافظ إلكترونية، تحويل بنكي. قارن السرعة والأمان والحدود الدنيا.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.payment}/`,
   },
   hero: {
-    h1: "أفضل طرق الدفع في كازينوهات الإنترنت في مصر",
-    description:
-      "اختر كازينو يدعم طرق دفع تناسبك: من Visa وMastercard إلى Skrill وNeteller والتحويل البنكي. نشرح الأمان وسرعة السحب بوضوح.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "طرق الدفع", href: ROUTES.payment },

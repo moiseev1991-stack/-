@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("slots-mobile");
 
 export const slotsMobileBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل سلوتس الموبايل في مصر 2026 | iOS وAndroid",
-    description:
-      "قارن أفضل تجارب السلوتس على الهاتف: تطبيقات، متصفح، وأداء على الشبكات المختلفة.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.slotsMobile}/`,
   },
   hero: {
-    h1: "أفضل سلوتس الموبايل في مصر",
-    description:
-      "العب السلوتس من أي مكان: عبر تطبيق الكازينو أو المتصفح. نركز على السرعة، الاستقرار، وجودة الواجهة على الشاشات الصغيرة.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "السلوتس", href: ROUTES.slots },

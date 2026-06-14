@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("real-money");
 
 export const realMoneyPageBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل كازينوهات الأموال الحقيقية في مصر 2026 | بونص ودفع",
-    description:
-      "قائمة كازينوهات للعب بمال حقيقي في مصر: مقارنة المكافآت، سرعة السحب، والأمان. ارقُب المخاطر والعب بمسؤولية.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.realMoney}/`,
   },
   hero: {
-    h1: "أفضل كازينوهات الأموال الحقيقية في مصر",
-    description:
-      "اللعب بمال حقيقي يجب أن يتم في مواقع مرخّصة وبحدود زمنية وميزانية واضحة. نساعدك على المقارنة دون وعود زائفة بالربح.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "كازينو بالمال الحقيقي", href: ROUTES.realMoney },

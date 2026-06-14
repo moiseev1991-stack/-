@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import HubSkeleton from "@/components/internal/HubSkeleton";
+import ArticleContent from "@/components/internal/ArticleContent";
+import { loadArticle } from "@/lib/articles";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
-const TITLE = "ألعاب قمار بمال حقيقي 2026 | أفضل مواقع القمار في مصر";
-const DESCRIPTION =
-  "دليل ألعاب القمار أونلاين بمال حقيقي للاعبين في مصر: سلوتس، روليت، بوكر، بلاك جاك، ولايف ديلر. اختر بأمان ومسؤولية.";
+const article = loadArticle("gambling-games");
 const canonical = absoluteUrl(`${ROUTES.gamblingGames}/`);
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: article.title,
+  description: article.description,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: article.title,
+    description: article.description,
     url: canonical,
   },
 };
@@ -25,9 +25,8 @@ export default function GamblingGamesPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: "ألعاب قمار أونلاين بمال حقيقي",
-        description:
-          "نختار أفضل مواقع ألعاب القمار للاعبين من مصر — سلوتس، طاولات، لايف ديلر — مع تركيز على الترخيص وسرعة السحب.",
+        h1: article.h1,
+        description: article.intro,
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "ألعاب القمار", href: ROUTES.gamblingGames },
@@ -43,6 +42,7 @@ export default function GamblingGamesPage() {
         },
       }}
       topCasinosTitle="أفضل مواقع ألعاب القمار"
+      contentSlot={<ArticleContent markdown={article.body} />}
       faq={[
         {
           question: "ما الفرق بين السلوتس والطاولات؟",

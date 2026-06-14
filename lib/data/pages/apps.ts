@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("apps");
 
 export const appsPageBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل تطبيقات الكازينو في مصر 2026 | iOS وAndroid",
-    description:
-      "مقارنة تطبيقات الكازينو: التثبيت، الأمان، والفرق بين التطبيق والمتصفح. روابط لسلوتس الموبايل.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.apps}/`,
   },
   hero: {
-    h1: "أفضل تطبيقات الكازينو في مصر",
-    description:
-      "التطبيقات يمكن أن تسرّع الوصول إلى ألعابك المفضلة وتمنح تجربة لمس أنظف. تحقق دائماً من المصدر الرسمي للتنزيل.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "تطبيقات الكازينو", href: ROUTES.apps },

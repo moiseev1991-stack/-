@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import CasinoLogo from "@/components/common/CasinoLogo";
 import FaqAccordion from "@/components/common/FaqAccordion";
+import ArticleContent from "@/components/internal/ArticleContent";
 import PageHero from "@/components/internal/PageHero";
 import PageShell from "@/components/internal/PageShell";
 import { casinoReviewSections } from "@/lib/content/casino-reviews";
@@ -15,6 +16,24 @@ import {
 } from "@/lib/seo/jsonld";
 import { reviewPublicPath, ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
+import { loadArticle, type ArticleKey } from "@/lib/articles";
+
+const ARTICLE_BY_SLUG: Record<string, ArticleKey> = {
+  "888starz": "888starz",
+  "jackpot-city": "jackpot-city",
+  "ruby-fortune": "ruby-fortune",
+  "spin-casino": "spin-casino",
+};
+
+function tryLoadReviewArticle(slug: string) {
+  const key = ARTICLE_BY_SLUG[slug];
+  if (!key) return undefined;
+  try {
+    return loadArticle(key);
+  } catch {
+    return undefined;
+  }
+}
 
 function reviewSlugs(): string[] {
   return casinoList.filter((c) => c.reviewLink).map((c) => c.id);
@@ -35,12 +54,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   const publicPath = reviewPublicPath(slug);
   const canonical = absoluteUrl(publicPath);
-  const title = `مراجعة ${casino.name} 2026 | بونص، سحب، وآراء الخبراء`;
-  const description = [
-    `مراجعة ${casino.name} 2026: مكافأة مذكورة "${casino.bonus}".`,
-    `RTP مرجعي ${casino.rtp}%، سحب مقدَّر ${casino.payoutDays} يوم.`,
-    "مقارنة تحريرية للبونص والشروط والسحب قبل فتح حساب.",
-  ].join(" ");
+  const article = tryLoadReviewArticle(slug);
+  const title =
+    article?.title ?? `مراجعة ${casino.name} 2026 | بونص، سحب، وآراء الخبراء`;
+  const description =
+    article?.description ??
+    [
+      `مراجعة ${casino.name} 2026: مكافأة مذكورة "${casino.bonus}".`,
+      `RTP مرجعي ${casino.rtp}%، سحب مقدَّر ${casino.payoutDays} يوم.`,
+      "مقارنة تحريرية للبونص والشروط والسحب قبل فتح حساب.",
+    ].join(" ");
   return {
     title,
     description,
@@ -82,6 +105,8 @@ export default async function CasinoReviewPage({ params }: PageProps) {
   if (!casino || !copy) {
     notFound();
   }
+
+  const article = tryLoadReviewArticle(slug);
 
   const descriptionNode = (() => {
     const text = copy.summary;
@@ -321,6 +346,24 @@ export default async function CasinoReviewPage({ params }: PageProps) {
               </Link>
             </div>
           </section>
+
+          {/* Editorial long-form (from lib/data/articles/<slug>.md) */}
+          {article && (
+            <section
+              aria-labelledby="article-heading"
+              className="rounded-xl border border-[#E8E4DA] bg-white p-6 shadow-sm"
+            >
+              <h2 id="article-heading" className="mb-2 text-xl font-bold text-[#1A1A1A]">
+                {article.h1}
+              </h2>
+              {article.intro && (
+                <p className="mb-4 text-sm leading-relaxed text-[#555]">
+                  {article.intro}
+                </p>
+              )}
+              <ArticleContent markdown={article.body} />
+            </section>
+          )}
 
           {/* FAQ */}
           {copy.faq.length > 0 && (

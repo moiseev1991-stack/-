@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("fastest-withdrawal");
 
 export const fastestWithdrawalsBundle: PageSeoBundle = {
   meta: {
-    title: "أسرع كازينوهات السحب في مصر 2026 | صرف خلال ساعات",
-    description:
-      "قائمة كازينوهات بأسرع سحب للمصريين: محافظ إلكترونية، عملات رقمية، ونصائح لتسريع أول سحب.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.paymentFastest}/`,
   },
   hero: {
-    h1: "أسرع كازينوهات السحب في مصر",
-    description:
-      "إذا كانت سرعة الصرف أولويتك، راجع الكازينوهات التي تدعم سحوبات سريعة عبر المحافظ والعملات الرقمية مع شروف واضحة.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "طرق الدفع", href: ROUTES.payment },

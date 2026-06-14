@@ -1,18 +1,19 @@
 import type { PageSeoBundle } from "@/lib/types/page";
 import { ROUTES } from "@/lib/routes";
 import type { FaqItem } from "@/lib/types/casino";
+import { loadArticle } from "@/lib/articles";
+
+const article = loadArticle("slots");
 
 export const slotsPageBundle: PageSeoBundle = {
   meta: {
-    title: "أفضل مواقع السلوتس في مصر 2026 | بونص وألعاب متنوعة",
-    description:
-      "أفضل كازينوهات للسلوتس في مصر: مكافآت، مزودون موثوقون، وجداول RTP. العب تجريبياً أو بمال حقيقي بمسؤولية.",
+    title: article.title,
+    description: article.description,
     canonicalPath: `${ROUTES.slots}/`,
   },
   hero: {
-    h1: "أفضل مواقع السلوتس في مصر",
-    description:
-      "السلوتس هي الأكثر شعبية أونلاين. نقارن الكازينوهات من حيث تنوع الألعاب، سرعة الدفع، وجودة المكافآت.",
+    h1: article.h1,
+    description: article.intro,
     breadcrumb: [
       { label: "الرئيسية", href: ROUTES.home },
       { label: "السلوتس", href: ROUTES.slots },

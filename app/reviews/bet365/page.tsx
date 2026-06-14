@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
 import BrandReviewSkeleton from "@/components/internal/BrandReviewSkeleton";
+import ArticleContent from "@/components/internal/ArticleContent";
+import { loadArticle } from "@/lib/articles";
 import { reviewPublicPath } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
 const SLUG = "bet365";
 const BRAND = "Bet365";
-const TITLE = "مراجعة Bet365 للاعبين العرب 2026";
-const DESCRIPTION =
-  "مراجعة Bet365 للاعبين العرب: هل يقبل اللاعبين من مصر؟ بدائل ممكنة، طرق الدفع، البث المباشر وسرعة السحب.";
+const article = loadArticle("bet365");
 const canonical = absoluteUrl(reviewPublicPath(SLUG));
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: article.title,
+  description: article.description,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "article",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: article.title,
+    description: article.description,
     url: canonical,
   },
 };
@@ -28,15 +28,16 @@ export default function Bet365ReviewPage() {
     <BrandReviewSkeleton
       slug={SLUG}
       brandName={BRAND}
-      metaTitle={TITLE}
-      metaDescription={DESCRIPTION}
-      h1="مراجعة Bet365 — هل يقبل اللاعبين من مصر؟"
-      intro="نوضّح حالة Bet365 للاعبين من مصر: قبول التسجيل، البدائل المتاحة، وطرق الدفع المعتمدة. المراجعة التحريرية الكاملة قيد التحضير."
+      metaTitle={article.title}
+      metaDescription={article.description}
+      h1={article.h1}
+      intro={article.intro}
       highlights={[
         { label: "السمعة", value: "عالمية" },
         { label: "البث المباشر", value: "متوفّر" },
         { label: "تطبيق", value: "Android · iOS" },
       ]}
+      contentSlot={<ArticleContent markdown={article.body} />}
       faq={[
         {
           question: "هل يقبل Bet365 اللاعبين من مصر؟",

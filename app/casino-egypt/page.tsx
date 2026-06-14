@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import HubSkeleton from "@/components/internal/HubSkeleton";
+import ArticleContent from "@/components/internal/ArticleContent";
+import { loadArticle } from "@/lib/articles";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 
-const TITLE = "كازينو مصر 2026 | أفضل الكازينوهات للاعبين المصريين";
-const DESCRIPTION =
-  "دليل كازينو أونلاين في مصر: مواقع تقبل الجنيه، طرق دفع محلية، مكافآت ترحيبية موثوقة وسحب سريع.";
+const article = loadArticle("casino-egypt");
 const canonical = absoluteUrl(`${ROUTES.casinoEgypt}/`);
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: article.title,
+  description: article.description,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: article.title,
+    description: article.description,
     url: canonical,
   },
 };
@@ -25,9 +25,8 @@ export default function CasinoEgyptPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: "كازينو مصر — دليل الكازينوهات أونلاين",
-        description:
-          "اخترنا أفضل الكازينوهات للاعبين من مصر: قبول الجنيه المصري، فودافون كاش، تطبيقات Android وiOS، ودعم عربي.",
+        h1: article.h1,
+        description: article.intro,
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "كازينو مصر", href: ROUTES.casinoEgypt },
@@ -43,6 +42,7 @@ export default function CasinoEgyptPage() {
         },
       }}
       topCasinosTitle="أفضل الكازينوهات للاعبين المصريين"
+      contentSlot={<ArticleContent markdown={article.body} />}
       faq={[
         {
           question: "هل توجد كازينوهات مرخّصة محلياً في مصر؟",

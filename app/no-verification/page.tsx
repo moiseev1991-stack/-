@@ -7,11 +7,13 @@ import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
 import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
+import { loadArticle } from "@/lib/articles";
+
+const noVerificationArticle = loadArticle("no-verification");
 
 export const metadata: Metadata = {
-  title: "كازينو بدون توثيق مصر 2026 | تسجيل سريع آمن",
-  description:
-    "دليل 2026 للكازينو بدون توثيق في مصر: مقارنة المواقع، طرق الدفع، المخاطر القانونية، ونصائح اختيار آمن.",
+  title: noVerificationArticle.title,
+  description: noVerificationArticle.description,
   alternates: { canonical: absoluteUrl(`${ROUTES.noVerification}/`) },
 };
 
@@ -33,8 +35,8 @@ export default function NoVerificationPage() {
   return (
     <>
       <PageHero
-        h1="كازينو بدون توثيق مصر 2026"
-        description="دليل شامل للكازينو بدون توثيق: مقارنة المواقع، فهم المخاطر، واختيار الأنسب لك."
+        h1={noVerificationArticle.h1}
+        description={noVerificationArticle.intro}
         breadcrumb={[
           { label: "الرئيسية", href: "/" },
           { label: "كازينو بدون توثيق", href: ROUTES.noVerification },
