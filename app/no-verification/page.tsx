@@ -8,6 +8,7 @@ import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
 import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { loadArticle } from "@/lib/articles";
+import { breadcrumbListJsonLd } from "@/lib/seo/jsonld";
 
 const noVerificationArticle = loadArticle("no-verification");
 
@@ -34,6 +35,17 @@ const risks = [
 export default function NoVerificationPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListJsonLd([
+              { name: "الرئيسية", path: "/" },
+              { name: "كازينو بدون توثيق", path: `${ROUTES.noVerification}/` },
+            ])
+          ),
+        }}
+      />
       <PageHero
         h1={noVerificationArticle.h1}
         description={noVerificationArticle.intro}

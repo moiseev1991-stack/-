@@ -7,16 +7,19 @@ import { absoluteUrl } from "@/lib/seo/site";
 
 const article = loadArticle("aviator");
 const canonical = absoluteUrl(`${ROUTES.aviator}/`);
+const TITLE = "لعبة الطيارة Aviator 2026 | الشرح وأفضل المواقع";
+const DESCRIPTION =
+  "كل ما تريد معرفته عن لعبة الطيارة Aviator: آلية اللعب، RTP، استراتيجيات، وأفضل المواقع التي تقدّمها للاعبين من مصر.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -25,8 +28,9 @@ export default function AviatorPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: article.h1,
-        description: article.intro,
+        h1: "لعبة الطيارة — كيف تلعب وأين",
+        description:
+          "Aviator (لعبة الطيارة) لعبة كراش من Spribe — رهان واحد ومضاعف ينمو حتى تسحب. شرح الآلية، RTP، ونصائح للحدود.",
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "لعبة الطيارة", href: ROUTES.aviator },

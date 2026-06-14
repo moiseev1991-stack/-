@@ -9,6 +9,7 @@ import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
 import { loadArticle } from "@/lib/articles";
+import { breadcrumbListJsonLd } from "@/lib/seo/jsonld";
 
 const liveArticle = loadArticle("live-casino");
 
@@ -28,6 +29,17 @@ const benefits = [
 export default function LiveCasinoPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListJsonLd([
+              { name: "الرئيسية", path: "/" },
+              { name: "كازينو مباشر", path: `${ROUTES.liveCasino}/` },
+            ])
+          ),
+        }}
+      />
       <PageHero
         h1={liveArticle.h1}
         description={liveArticle.intro}

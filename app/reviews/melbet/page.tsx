@@ -9,16 +9,19 @@ const SLUG = "melbet";
 const BRAND = "Melbet";
 const article = loadArticle("melbet");
 const canonical = absoluteUrl(reviewPublicPath(SLUG));
+const TITLE = "مراجعة Melbet 2026 | بونص، تطبيق، سحب";
+const DESCRIPTION =
+  "مراجعة Melbet 2026 للاعبين العرب: التسجيل، البونص الترحيبي، التطبيق، الأسواق الرياضية وأوقات السحب.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "article",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -28,10 +31,10 @@ export default function MelbetReviewPage() {
     <BrandReviewSkeleton
       slug={SLUG}
       brandName={BRAND}
-      metaTitle={article.title}
-      metaDescription={article.description}
-      h1={article.h1}
-      intro={article.intro}
+      metaTitle={TITLE}
+      metaDescription={DESCRIPTION}
+      h1="مراجعة ميلبيت Melbet"
+      intro="نراجع Melbet للاعبين العرب: التسجيل بسرعة، المكافأة الترحيبية وشروط الرهان، تطبيقات Android وiOS، وأوقات السحب الفعلية."
       highlights={[
         { label: "أسواق الرهان", value: "+1000" },
         { label: "تطبيق", value: "Android · iOS" },

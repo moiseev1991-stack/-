@@ -9,16 +9,19 @@ const SLUG = "bet365";
 const BRAND = "Bet365";
 const article = loadArticle("bet365");
 const canonical = absoluteUrl(reviewPublicPath(SLUG));
+const TITLE = "مراجعة Bet365 للاعبين العرب 2026";
+const DESCRIPTION =
+  "مراجعة Bet365 للاعبين العرب: هل يقبل اللاعبين من مصر؟ بدائل ممكنة، طرق الدفع، البث المباشر وسرعة السحب.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "article",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -28,10 +31,10 @@ export default function Bet365ReviewPage() {
     <BrandReviewSkeleton
       slug={SLUG}
       brandName={BRAND}
-      metaTitle={article.title}
-      metaDescription={article.description}
-      h1={article.h1}
-      intro={article.intro}
+      metaTitle={TITLE}
+      metaDescription={DESCRIPTION}
+      h1="مراجعة Bet365 — هل يقبل اللاعبين من مصر؟"
+      intro="نوضّح حالة Bet365 للاعبين من مصر: قبول التسجيل، البدائل المتاحة، وطرق الدفع المعتمدة."
       highlights={[
         { label: "السمعة", value: "عالمية" },
         { label: "البث المباشر", value: "متوفّر" },

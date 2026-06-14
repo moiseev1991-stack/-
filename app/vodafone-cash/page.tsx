@@ -7,16 +7,19 @@ import { absoluteUrl } from "@/lib/seo/site";
 
 const article = loadArticle("vodafone-cash");
 const canonical = absoluteUrl(`${ROUTES.vodafoneCash}/`);
+const TITLE = "كازينو ومراهنات فودافون كاش 2026 | إيداع وسحب فوري";
+const DESCRIPTION =
+  "كازينوهات ومواقع مراهنات تقبل فودافون كاش في مصر: شروط الإيداع، أوقات السحب، الحدود والأمان. اختر منصة متوافقة قبل التسجيل.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -25,8 +28,9 @@ export default function VodafoneCashPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: article.h1,
-        description: article.intro,
+        h1: "ألعاب قمار بمال حقيقي عبر فودافون كاش",
+        description:
+          "دليلنا لاستخدام فودافون كاش في كازينو أونلاين ومواقع المراهنات بمصر: شروط الإيداع، حدود السحب، والمواقع المتوافقة.",
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "طرق الدفع", href: ROUTES.payment },

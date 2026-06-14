@@ -7,16 +7,19 @@ import { absoluteUrl } from "@/lib/seo/site";
 
 const article = loadArticle("casino-egypt");
 const canonical = absoluteUrl(`${ROUTES.casinoEgypt}/`);
+const TITLE = "كازينو مصر 2026 | أفضل الكازينوهات للاعبين المصريين";
+const DESCRIPTION =
+  "دليل كازينو أونلاين في مصر: مواقع تقبل الجنيه، طرق دفع محلية، مكافآت ترحيبية موثوقة وسحب سريع.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -25,8 +28,9 @@ export default function CasinoEgyptPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: article.h1,
-        description: article.intro,
+        h1: "كازينو مصر — دليل الكازينوهات أونلاين",
+        description:
+          "اخترنا أفضل الكازينوهات للاعبين من مصر: قبول الجنيه المصري، فودافون كاش، تطبيقات Android وiOS، ودعم عربي.",
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "كازينو مصر", href: ROUTES.casinoEgypt },

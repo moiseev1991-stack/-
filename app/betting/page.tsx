@@ -7,16 +7,19 @@ import { absoluteUrl } from "@/lib/seo/site";
 
 const article = loadArticle("betting");
 const canonical = absoluteUrl(`${ROUTES.betting}/`);
+const TITLE = "أفضل مواقع المراهنات في مصر 2026 | مراهنات رياضية";
+const DESCRIPTION =
+  "مواقع مراهنات رياضية تقبل اللاعبين من مصر: مقارنة المكافآت، أسواق الرهان، طرق الدفع وسرعة السحب. اقرأ قبل التسجيل.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -25,8 +28,9 @@ export default function BettingPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: article.h1,
-        description: article.intro,
+        h1: "مواقع مراهنات عالمية تقبل اللاعبين من مصر",
+        description:
+          "دليل عملي لاختيار موقع مراهنات رياضية موثوق: ترخيص، أسواق رهان، عروض، وطرق دفع شائعة في مصر مثل فودافون كاش.",
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "مواقع المراهنات", href: ROUTES.betting },

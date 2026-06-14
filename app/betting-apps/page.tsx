@@ -7,16 +7,19 @@ import { absoluteUrl } from "@/lib/seo/site";
 
 const article = loadArticle("betting-apps");
 const canonical = absoluteUrl(`${ROUTES.bettingApps}/`);
+const TITLE = "أفضل برامج وتطبيقات المراهنات 2026 | تحميل Android وiOS";
+const DESCRIPTION =
+  "تطبيقات مراهنات لمستخدمي مصر: Android (APK) وiOS، خطوات التثبيت، الأمان، وتجربة الاستخدام مقارنة بالمتصفح.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -25,8 +28,9 @@ export default function BettingAppsPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: article.h1,
-        description: article.intro,
+        h1: "برنامج مراهنات — أفضل التطبيقات في مصر",
+        description:
+          "قارن أفضل تطبيقات المراهنات الرياضية: تجربة المستخدم، توافر التطبيق على Android (APK) وiOS، الأمان وسهولة الإيداع/السحب.",
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "تطبيقات المراهنات", href: ROUTES.bettingApps },

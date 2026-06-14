@@ -8,6 +8,7 @@ import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 import Link from "next/link";
 import { loadArticle } from "@/lib/articles";
+import { breadcrumbListJsonLd } from "@/lib/seo/jsonld";
 
 const bonusesArticle = loadArticle("bonuses");
 
@@ -34,6 +35,17 @@ const bonusTypes = [
 export default function BonusesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListJsonLd([
+              { name: "الرئيسية", path: "/" },
+              { name: "بونص ترحيب", path: `${ROUTES.bonuses}/` },
+            ])
+          ),
+        }}
+      />
       <PageHero
         h1={bonusesArticle.h1}
         description={bonusesArticle.intro}

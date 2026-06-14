@@ -10,6 +10,7 @@ import ArticleBodyLoader from "@/components/common/ArticleBodyLoader";
 import { ROUTES } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo/site";
 import { loadArticle } from "@/lib/articles";
+import { breadcrumbListJsonLd } from "@/lib/seo/jsonld";
 
 const blackjackArticle = loadArticle("blackjack");
 
@@ -62,6 +63,17 @@ export default function BlackjackPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListJsonLd([
+              { name: "الرئيسية", path: "/" },
+              { name: "بلاك جاك", path: `${ROUTES.blackjack}/` },
+            ])
+          ),
+        }}
       />
       <InnerLayout
         h1={blackjackArticle.h1}

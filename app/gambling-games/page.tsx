@@ -7,16 +7,19 @@ import { absoluteUrl } from "@/lib/seo/site";
 
 const article = loadArticle("gambling-games");
 const canonical = absoluteUrl(`${ROUTES.gamblingGames}/`);
+const TITLE = "ألعاب قمار بمال حقيقي 2026 | أفضل مواقع القمار في مصر";
+const DESCRIPTION =
+  "دليل ألعاب القمار أونلاين بمال حقيقي للاعبين في مصر: سلوتس، روليت، بوكر، بلاك جاك، ولايف ديلر. اختر بأمان ومسؤولية.";
 
 export const metadata: Metadata = {
-  title: article.title,
-  description: article.description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     locale: "ar_EG",
     type: "website",
-    title: article.title,
-    description: article.description,
+    title: TITLE,
+    description: DESCRIPTION,
     url: canonical,
   },
 };
@@ -25,8 +28,9 @@ export default function GamblingGamesPage() {
   return (
     <HubSkeleton
       hero={{
-        h1: article.h1,
-        description: article.intro,
+        h1: "ألعاب قمار أونلاين بمال حقيقي",
+        description:
+          "نختار أفضل مواقع ألعاب القمار للاعبين من مصر — سلوتس، طاولات، لايف ديلر — مع تركيز على الترخيص وسرعة السحب.",
         breadcrumb: [
           { label: "الرئيسية", href: "/" },
           { label: "ألعاب القمار", href: ROUTES.gamblingGames },
